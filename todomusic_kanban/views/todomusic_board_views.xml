@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <record model="ir.actions.act_window" id="view_graph_todo_music">
+ <field name="name">Premios</field>
+ <field name="res_model">artista</field>
+ <field name="view_mode">graph</field>
+ <field name="view_id" ref="todo_music.view_graph_todo_music"/>
+ </record>
+ <record model="ir.actions.act_window" id="view_pivot_todo_music">
+ <field name="name">Premios</field>
+ <field name="res_model">artista</field>
+ <field name="view_mode">pivot</field>
+ <field name="view_id" ref="todo_music.view_pivot_todo_music"/>
+ </record>
+ <record model="ir.actions.act_window" id="act_todo_list">
+ <field name="name">Lista de canciones</field>
+ <field name="res_model">artista</field>
+ <field name="view_mode">tree,form</field>
+ </record>
+ <record model="ir.ui.view" id="board_todo_form">
+ <field name="name">Lista De Canciones Form</field>
+ <field name="model">board.board</field>
+ <field name="type">form</field>
+ <field name="arch" type="xml">
+ <form string="To-Do Dashboard">
+ <board style="2-1">
+ <column>
+ <action string="Premios" name="%(view_graph_todo_music)d" height="150" width="510"/>
+<action string="Premios" name="%(view_pivot_todo_music)d"/>
+ </column>
+ <column>
+ <action string="Lista De Canciones" name="%(act_todo_list)d"/>
+ </column>
+ </board>
+ </form>
+ </field>
+ </record>
+ <record model="ir.actions.act_window" id="open_board_todo">
+ <field name="name">Todo Music  DashBoard</field>
+ <field name="res_model">board.board</field>
+ <field name="view_mode">form</field>
+ <field name="usage">menu</field>
+ <field name="view_id" ref="board_todo_form"/>
+ </record>
+ <menuitem name="Todo Music Dashboard" parent="agomezc.main_menu_artistas" action="open_board_todo" sequence="1" id="menu_todo_board"/>
+</odoo>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <!-- Plantilla traducible -->
+ <template id = "reports_canciones_document">
+ <!-- Usaremos el idioma, o lang, configurado para cada usuario responsabe de la tarea -->
+ <t t-set = "doc" t-value = "doc.with_context(lang = doc.user_id.lang)" />
+ <t t-call = "web.external_layout">
+ <div class="page">
+ <div class="row">
+ <h3>
+ <span t-field="doc.name"/>
+ </h3>
+ </div>
+ <table class="table table-condensed">
+ <thead>
+ <tr>
+ <th style="width:35%;">CANCIÓN</th>
+ <th style="width:35%;">PREMIOS</th>
+ <th style="width:35%;">DISPONIBLE HASTA</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>
+ <span t-field="doc.name2"/>
+ </td>
+ <td class="text-rigth">
+ <!-- esto es para escribir variables a parte -->
+ <span t-field="doc.premios"/>
+ <td class="text-rigth2">
+ <span t-field="doc.date_deadline"/>
+ </td>
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </t>
+ </template>
+ <!-- Plantilla principal -->
+ <template id = "reports_canciones">
+ <t t-call = "web.html_container">
+ <t t-foreach = "docs" t-as = "doc">
+ <t t-call = "todomusic_kanban.reports_canciones_document" t-lang = "doc.user_id.lang" />
+ </t>
+ </t>
+ </template>
+</odoo>
+
+

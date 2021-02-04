@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <act_window id="action_todo_artista" name="TODO_MUSIC" res_model="artista" view_mode="tree,form,graph,pivot" />
+ <!-- Menu item to open To-do Music -->
+ <menuitem id="menu_todo_music" name="Todo_Music Alex" parent="agomezc.main_menu_artistas" sequence="30" action="action_todo_artista" />
+ <record id="view_form_todo_music_inherited" model="ir.ui.view">
+<field name="name">TODO_MUSIC</field>
+ <field name="model">artista</field>
+ <field name="inherit_id" ref="agomezc.view_form_agomezc"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="premios" position="before"/>
+ </field>
+ <field name="is_done" position="before">
+ <field name="user_id" />
+ <field name="date_deadline" />
+ </field>
+ <field name="name" position="attributes">
+ <attribute name="string">Artista </attribute>
+ </field>
+ <field name="active" position="attributes">
+ <attribute name="invisible">1</attribute>
+ </field>
+ <sheet position="after">
+ <div class="oe_chatter">
+ <field name="message_follower_ids" widget="mail_followers" />
+ <field name="message_ids" widget="mail_thread" />
+ </div>
+ </sheet>
+ </field>
+ </record>
+ <record id="view_tree_todo_music_inherited" model="ir.ui.view">
+ <field name="name">Todo Music tree  User extension</field>
+ <field name="model">artista</field>
+ <field name="inherit_id" ref="agomezc.view_tree_agomezc"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="name2" />
+ <field name="premios" />
+ <field name="user_id" />
+ </field>
+ <field name="user_id" position="after">
+ <field name="date_deadline" />
+ </field>
+ </field>
+ </record>
+ <record id="view_filter_todo_music_inherited" model="ir.ui.view">
+ <field name="name">Todo Music tree  User extension</field>
+ <field name="model">artista</field>
+ <field name="inherit_id" ref="agomezc.view_filter_agomezc"/>
+ <field name="arch" type="xml">
+ <field name="name" position="after">
+ <field name="user_id" />
+ <filter name="filter_my_tasks" string="Mis tareas" domain="[('user_id','in',[uid,False])]" />
+ <filter name="filter_not_assigned" string="Sin asignar" domain="[('user_id','=',False)]" />
+ </field>
+ </field>
+ </record>
+ <record id="view_graph_todo_music" model="ir.ui.view">
+ <field name="name">Todo Music Graph</field>
+ <field name="model">artista</field>
+ <field name="arch" type="xml">
+ <graph>
+ <field name="name" />
+ <field name="premios" type="measure" />
+</graph>
+ </field>
+ </record>
+ <record id="view_pivot_todo_music" model="ir.ui.view">
+ <field name="name">Todo Music Pivot</field>
+ <field name="model">artista</field>
+ <field name="arch" type="xml">
+ <pivot>
+ <field name="name" type="col"/>
+ <field name="premios" type="row"/>
+</pivot>
+ </field>
+ </record>
+</odoo>
+

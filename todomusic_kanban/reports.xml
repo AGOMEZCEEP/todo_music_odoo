@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	 <report
+		id="reports_todomusic_canciones"
+		model="artista"
+ 		string="canciones"
+		report_type="qweb-pdf"
+		name="todomusic_kanban.reports_canciones"
+		attachment_use="False"
+		file="todomusic_kanban.reports_canciones" />
+</odoo>

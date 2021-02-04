@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <act_window id="action_todomusic_kanban" name="Todo Music Kanban Board" res_model="artista" view_mode="kanban,tree,form" />
+ <!-- Menu item to open Todo Music Board -->
+ <menuitem id="menu_todomusic_kanban" name="Todo Music Kanban Board" parent="agomezc.main_menu_artistas" sequence="30" action="action_todomusic_kanban" />
+ <record id="Todo Music Kanban" model="ir.ui.view">
+ <field name="name">Todo Music Kanban</field>
+ <field name="model">artista</field>
+ <field name="arch" type="xml">
+ <kanban default_group_by="kanban_state" default_order="date_deadline" quick_create="false">
+ <templates>
+ <t t-name="kanban-box">
+ <div class="oe_kanban_card">
+ <div class="oe_kanban_content">
+ <h4>
+ <a type="open">
+ <field name="name" />
+ </a>
+ </h4>
+ <ul>
+ <li>
+ <field name="user_id" />
+ </li>
+ <li>
+ <field name="date_deadline" />
+ </li>
+ </ul>
+ <div class="oe_kanban_bottom_right">
+ <field name="kanban_state" widget="kanban_state_selection"/>
+ </div>
+ <div class="oe_kanban_footer_left">
+ <field name="priority" widget="priority"/>
+ </div>
+ </div>
+ </div>
+ </t>
+ </templates>
+ </kanban>
+ </field>
+ </record>
+</odoo>
